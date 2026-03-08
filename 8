@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>С 8 Марта ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+background:linear-gradient(#ff9fb3,#ffffff);
+overflow:hidden;
+}
+
+.page{
+display:none;
+padding-top:100px;
+}
+
+.active{
+display:block;
+}
+
+h1{
+font-size:50px;
+color:#ff2e63;
+}
+
+button{
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:#ff2e63;
+color:white;
+cursor:pointer;
+margin-top:30px;
+}
+
+.gallery img{
+width:200px;
+border-radius:20px;
+margin:10px;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+.heart{
+position:fixed;
+top:-10px;
+color:red;
+font-size:25px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh);}
+100%{transform:translateY(100vh);}
+}
+
+.rose{
+position:fixed;
+top:-10px;
+font-size:30px;
+animation:fall 8s linear infinite;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Страница 1 -->
+<div class="page active" id="page1">
+<h1>С 8 Марта ❤️</h1>
+<p>У меня есть для тебя маленький сюрприз</p>
+<button onclick="nextPage(2)">Открыть подарок 🔐</button>
+</div>
+
+<!-- Страница 2 -->
+<div class="page" id="page2">
+<h1>Ты особенная ❤️</h1>
+
+<p>
+Спасибо что ты есть в моей жизни.  
+Ты самая красивая, добрая  
+и самая лучшая девушка.
+</p>
+
+<button onclick="nextPage(3)">Сюрприз 🎁</button>
+</div>
+
+<!-- Страница 3 -->
+<div class="page" id="page3">
+
+<h1>Наши моменты 📸</h1>
+
+<div class="gallery">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+</div>
+
+<p>С 8 марта ❤️</p>
+
+</div>
+
+<audio autoplay loop>
+<source src="music.mp3">
+</audio>
+
+<script>
+
+function nextPage(page){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+document.getElementById("page"+page).classList.add("active")
+}
+
+function hearts(){
+let heart=document.createElement("div")
+heart.className="heart"
+heart.innerHTML="❤️"
+heart.style.left=Math.random()*100+"vw"
+heart.style.fontSize=Math.random()*30+20+"px"
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),6000)
+}
+
+function roses(){
+let rose=document.createElement("div")
+rose.className="rose"
+rose.innerHTML="🌹"
+rose.style.left=Math.random()*100+"vw"
+document.body.appendChild(rose)
+
+setTimeout(()=>rose.remove(),8000)
+}
+
+setInterval(hearts,300)
+setInterval(roses,800)
+
+</script>
+
+</body>
+</html>
